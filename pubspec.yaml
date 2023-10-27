@@ -4,14 +4,13 @@ version: 2.0.5
 homepage: https://github.com/ch-muhammad-adil/flutter-circular_profile_avatar
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=3.1.0 <4.0.0"
+  flutter: ">=3.13.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
-  cached_network_image: ^3.1.0
+  extended_image: ^8.1.1
 
 
 dev_dependencies:

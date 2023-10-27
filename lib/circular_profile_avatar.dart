@@ -1,8 +1,8 @@
 library circular_profile_avatar;
 
-import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 ///CircularProfileAvatar allows developers to implement circular profile avatar with border,
 /// overlay, initialsText and many other features which simplifies developer's job.
@@ -19,11 +19,11 @@ class CircularProfileAvatar extends StatefulWidget {
       this.showInitialTextAbovePicture = false,
       this.onTap,
       this.foregroundColor = Colors.transparent,
-      this.placeHolder,
-      this.errorWidget,
-      this.imageBuilder,
-      this.animateFromOldImageOnUrlChange,
-      this.progressIndicatorBuilder,
+      // this.placeHolder,
+      // this.errorWidget,
+      // this.imageBuilder,
+      // this.animateFromOldImageOnUrlChange,
+      // this.progressIndicatorBuilder,
       this.child,
       this.imageFit = BoxFit.cover,
       this.httpHeaders,
@@ -73,21 +73,21 @@ class CircularProfileAvatar extends StatefulWidget {
   /// sets onTap gesture.
   final GestureTapCallback? onTap;
 
-  /// Widget displayed while the target [imageUrl] is loading, works only if [cacheImage] is true.
-  final PlaceholderWidgetBuilder? placeHolder;
+  // /// Widget displayed while the target [imageUrl] is loading, works only if [cacheImage] is true.
+  // final PlaceholderWidgetBuilder? placeHolder;
 
-  /// Widget displayed while the target [imageUrl] failed loading, works only if [cacheImage] is true.
-  final LoadingErrorWidgetBuilder? errorWidget;
+  // /// Widget displayed while the target [imageUrl] failed loading, works only if [cacheImage] is true.
+  // final LoadingErrorWidgetBuilder? errorWidget;
 
-  /// Widget displayed while the target [imageUrl] is loading, works only if [cacheImage] is true.
-  final ProgressIndicatorBuilder? progressIndicatorBuilder;
+  // /// Widget displayed while the target [imageUrl] is loading, works only if [cacheImage] is true.
+  // final ProgressIndicatorBuilder? progressIndicatorBuilder;
 
-  /// Optional builder to further customize the display of the image.
-  final ImageWidgetBuilder? imageBuilder;
+  // /// Optional builder to further customize the display of the image.
+  // final ImageWidgetBuilder? imageBuilder;
 
   /// When set to true it will animate from the old image to the new image
-  /// if the url changes.
-  final bool? animateFromOldImageOnUrlChange;
+  // /// if the url changes.
+  // final bool? animateFromOldImageOnUrlChange;
 
   /// Setting child will hide every other widget [initialsText] and profile picture against [imageUrl].
   /// Best use case is passing [AssetImage] as profile picture. You can pass [imageUrl] as empty string if you want to set child value.
@@ -189,16 +189,16 @@ class _CircularProfileAvatarState extends State<CircularProfileAvatar> {
     return widget.cacheImage
         ? ClipRRect(
             borderRadius: BorderRadius.circular(widget.radius),
-            child: CachedNetworkImage(
+            child: ExtendedImage.network(
+              widget.imageUrl,
               fit: widget.imageFit,
-              httpHeaders: httpHeaders ?? {},
-              imageUrl: widget.imageUrl,
-              errorWidget: widget.errorWidget,
-              placeholder: widget.placeHolder,
-              imageBuilder: widget.imageBuilder,
-              progressIndicatorBuilder: widget.progressIndicatorBuilder,
-              useOldImageOnUrlChange:
-                  widget.animateFromOldImageOnUrlChange ?? false,
+              headers: httpHeaders ?? {},
+              // errorWidget: widget.errorWidget,
+              // placeholder: widget.placeHolder,
+              // imageBuilder: widget.imageBuilder,
+              // progressIndicatorBuilder: widget.progressIndicatorBuilder,
+              // useOldImageOnUrlChange:
+              //     widget.animateFromOldImageOnUrlChange ?? false,
             ),
           )
         : ClipRRect(
